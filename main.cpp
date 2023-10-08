@@ -12,7 +12,7 @@ int main()
     PlayerController controller(my_player);
     Coordinates coord = controller.getCoordinates();
     std::cout << coord.getX() << " " << coord.getY() << "\n";
-    my_player.setValue(Option::POINTS, 100);
+    my_player.setValue(Option::POINTS, 500000);
     std::cout << my_player.getValue(Option::POINTS) << "\n";
     return 0;
 }
