@@ -10,4 +10,6 @@ set(PLAYER Player/Player.cpp)
 set(CONTROLLER Controller/Coordinates.cpp Controller/PlayerController.cpp)
 set(CHARACTERISTIC Characteristic/Characteristic.cpp Characteristic/Health.cpp Characteristic/Points.cpp)
 
-add_executable(main main.cpp ${PLAYER} ${CONTROLLER} ${CHARACTERISTIC})
+add_executable(main main.cpp    ${PLAYER}
+                                ${CONTROLLER}
+                                ${CHARACTERISTIC})

@@ -2,6 +2,11 @@
 #include "Controller/PlayerController.hh"
 #include <iostream>
 
+class Cell
+{
+
+};
+
 int main()
 {
     Player my_player;
