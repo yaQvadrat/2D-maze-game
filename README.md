@@ -1,2 +1,2 @@
 # OOP
-OOP lessons game
+OOP lessons simple game
