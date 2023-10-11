@@ -1,5 +1,5 @@
 #ifndef COORDINATES_HH
-#define COORDINATES_hh
+#define COORDINATES_HH
 
 #define DEF_X 0
 #define DEF_Y 0

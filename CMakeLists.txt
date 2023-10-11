@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(PLAYER Player/Player.cpp)
 set(CONTROLLER Controller/Coordinates.cpp Controller/PlayerController.cpp)
 set(CHARACTERISTIC Characteristic/Characteristic.cpp Characteristic/Health.cpp Characteristic/Points.cpp)
-set(FIELD Field/Cell.cpp)
+set(FIELD Field/Cell.cpp Field/Field.cpp)
 set(EVENT Event/IEvent.cpp Event/PointsEvent.cpp)
 
 add_executable(main main.cpp    ${PLAYER}

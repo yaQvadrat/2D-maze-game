@@ -12,7 +12,7 @@ bool Field::checkCoordinates(Coordinates coord)
     return x >= 0 && x < width && y >= 0 && y < height; 
 }
 
-Field::Field(int width = DEF_SIZE, int height = DEF_SIZE): width{width}, height{height}
+Field::Field(int width, int height): width{width}, height{height}
 {
     if (!checkFieldSize(width, height))
         throw std::invalid_argument("Invalid field size");
@@ -57,4 +57,14 @@ Coordinates Field::getEntry()
 Coordinates Field::getExit()
 {
     return exit;
+}
+
+int Field::getWidth()
+{
+    return width;
+}
+
+int Field::getHeight()
+{
+    return height;
 }

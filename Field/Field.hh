@@ -23,52 +23,23 @@ class Field
     bool checkCoordinates(Coordinates coord);
 
 public:
-    Field(int width = DEF_SIZE, int height = DEF_SIZE): width{width}, height{height}
-    {
-        if (!checkFieldSize(width, height))
-            throw std::invalid_argument("Invalid field size");
-        entry = {DEF_ENTRY, DEF_ENTRY};
-        exit = {width - 1, height - 1};
-        cells = new Cell*[width];
-        for (size_t x = 0; x < width; ++x)
-            cells[x] = new Cell[height];
-    }
+    Field(int width = DEF_SIZE, int height = DEF_SIZE);
 
-    ~Field()
-    {
-        for (size_t x = 0; x < width; ++x)
-            delete [] cells[x];
-        delete [] cells;
-    }
+    ~Field();
 
-    const Cell& getCell(Coordinates coord)
-    {
-        if (!checkCoordinates(coord))
-            throw std::out_of_range("Invalid cell coordinates");
-        return cells[coord.getX()][coord.getY()];
-    }
+    const Cell& getCell(Coordinates coord);
 
-    void setEntry(Coordinates entry)
-    {
-        if(checkCoordinates(entry) && (entry != exit))
-            this->entry = entry;
-    }
+    void setEntry(Coordinates entry);
 
-    void setExit(Coordinates exit)
-    {
-        if(checkCoordinates(exit) && (entry != exit))
-            this->exit = exit;
-    }
+    void setExit(Coordinates exit);
 
-    Coordinates getEntry()
-    {
-        return entry;
-    }
+    Coordinates getEntry();
 
-    Coordinates getExit()
-    {
-        return exit;
-    }
+    Coordinates getExit();
+
+    int getWidth();
+
+    int getHeight();
 };
 
 #endif
