@@ -23,7 +23,7 @@ public:
 
     void setPassable(bool passable = true);
 
-    bool getPassable();
+    bool getPassable() const;
 
 };
 

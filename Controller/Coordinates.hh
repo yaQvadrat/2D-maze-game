@@ -17,6 +17,8 @@ public:
     int getX() const;
 
     int getY() const;
+
+    bool operator!=(const Coordinates &other) const;
 };
 
 #endif

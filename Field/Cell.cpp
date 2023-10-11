@@ -44,7 +44,7 @@ void Cell::setPassable(bool passable)
     this->passable = passable;
 }
 
-bool Cell::getPassable()
+bool Cell::getPassable() const
 {
     return passable;
 }
