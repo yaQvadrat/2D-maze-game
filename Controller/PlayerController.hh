@@ -1,6 +1,7 @@
 #ifndef PLAYERCONTOLLER_HH
 #define PLAYERCONTOLLER_HH
 
+#include "../Field/Field.hh"
 #include "../Player/Player.hh"
 #include "Coordinates.hh"
 
@@ -8,13 +9,12 @@ enum class Direction {UP, DOWN, LEFT, RIGHT};
 
 class PlayerController
 {
+    Field &field;
     Player &player;
     Coordinates coordinates;
 
-    bool check(Coordinates coord);
-
 public:
-    PlayerController(Player &player, int x = DEF_X, int y = DEF_Y);
+    PlayerController(Field &field, Player &player);
 
     const Coordinates& getCoordinates();
 

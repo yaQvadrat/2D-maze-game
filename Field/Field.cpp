@@ -5,7 +5,7 @@ bool Field::checkFieldSize(int width, int height)
     return width >= MIN_SIZE && width <= MAX_SIZE && height >= MIN_SIZE && height <= MAX_SIZE;
 }
 
-bool Field::checkCoordinates(Coordinates coord)
+bool Field::checkCoordinates(Coordinates coord) const
 {
     int x = coord.getX();
     int y = coord.getY();
@@ -30,7 +30,7 @@ Field::~Field()
     delete [] cells;
 }
 
-const Cell& Field::getCell(Coordinates coord)
+const Cell& Field::getCell(Coordinates coord) const
 {
     if (!checkCoordinates(coord))
         throw std::out_of_range("Invalid cell coordinates");
@@ -47,6 +47,12 @@ void Field::setExit(Coordinates exit)
 {
     if(checkCoordinates(exit) && (entry != exit))
         this->exit = exit;
+}
+
+void Field::setPassable(Coordinates coordinates, bool passable)
+{
+    if (checkCoordinates(coordinates))
+        cells[coordinates.getX()][coordinates.getY()].setPassable(passable);
 }
 
 Coordinates Field::getEntry()

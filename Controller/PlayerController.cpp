@@ -1,11 +1,7 @@
 #include "PlayerController.hh"
 
-PlayerController::PlayerController(Player &player, int x, int y): player{player}
-{
-    Coordinates coord(x, y);
-    if (check(coord))
-        coordinates = coord;
-}
+PlayerController::PlayerController(Field &field, Player &player)
+    : field{field}, player{player}, coordinates{field.getEntry()}{}
 
 const Coordinates& PlayerController::getCoordinates()
 {
@@ -33,11 +29,6 @@ void PlayerController::move(Direction direction)
         coordinates.x += 1;
         break;
     }
-    if(!check(coordinates))
+    if(!(field.checkCoordinates(coordinates) && field.getCell(coordinates).getPassable()))
         coordinates = before_change;
-}
-
-bool PlayerController::check(Coordinates coord)
-{
-    return true;
 }

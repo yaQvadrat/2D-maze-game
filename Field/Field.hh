@@ -20,18 +20,18 @@ class Field
 
     bool checkFieldSize(int width, int height);
 
-    bool checkCoordinates(Coordinates coord);
-
 public:
     Field(int width = DEF_SIZE, int height = DEF_SIZE);
 
     ~Field();
 
-    const Cell& getCell(Coordinates coord);
+    const Cell& getCell(Coordinates coord) const;
 
     void setEntry(Coordinates entry);
 
     void setExit(Coordinates exit);
+
+    void setPassable(Coordinates coordinates, bool passable = true);
 
     Coordinates getEntry();
 
@@ -40,6 +40,8 @@ public:
     int getWidth();
 
     int getHeight();
+
+    bool checkCoordinates(Coordinates coord) const;
 };
 
 #endif
