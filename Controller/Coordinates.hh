@@ -18,6 +18,8 @@ public:
 
     int getY() const;
 
+    bool operator==(const Coordinates &other) const;
+
     bool operator!=(const Coordinates &other) const;
 };
 
