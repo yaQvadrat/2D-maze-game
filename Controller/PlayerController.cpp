@@ -3,7 +3,7 @@
 PlayerController::PlayerController(Field &field, Player &player)
     : field{field}, player{player}, coordinates{field.getEntry()}{}
 
-const Coordinates& PlayerController::getCoordinates()
+Coordinates PlayerController::getCoordinates()
 {
     return coordinates;
 }

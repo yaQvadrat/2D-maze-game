@@ -1,5 +1,5 @@
-#ifndef PLAYERCONTOLLER_HH
-#define PLAYERCONTOLLER_HH
+#ifndef PLAYERCONTROLLER_HH
+#define PLAYERCONTROLLER_HH
 
 #include "../Field/Field.hh"
 #include "../Player/Player.hh"
@@ -16,7 +16,7 @@ class PlayerController
 public:
     PlayerController(Field &field, Player &player);
 
-    const Coordinates& getCoordinates();
+    Coordinates getCoordinates();
 
     void move(Direction direction);
 };
