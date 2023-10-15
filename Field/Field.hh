@@ -29,6 +29,10 @@ public:
 
     Field& operator=(const Field &other);
 
+    Field(Field &&other);
+
+    Field& operator=(Field &&other);
+
     const Cell& getCell(Coordinates coord) const;
 
     void setEntry(Coordinates entry);

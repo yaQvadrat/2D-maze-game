@@ -62,6 +62,30 @@ Field& Field::operator=(const Field &other)
     return *this;
 }
 
+Field::Field(Field &&other)
+    : width{0}, height{0},
+      entry{Coordinates()}, exit{Coordinates()},
+      cells{nullptr} 
+{
+    std::swap(width, other.width);
+    std::swap(height, other.width);
+    std::swap(entry, other.entry);
+    std::swap(exit, other.exit);
+    std::swap(cells, other.cells);
+}
+
+Field& Field::operator=(Field &&other)
+{
+    if (this != &other) {
+        std::swap(width, other.width);
+        std::swap(height, other.width);
+        std::swap(entry, other.entry);
+        std::swap(exit, other.exit);
+        std::swap(cells, other.cells);
+    }
+    return *this;
+}
+
 const Cell& Field::getCell(Coordinates coord) const
 {
     if (!checkCoordinates(coord))

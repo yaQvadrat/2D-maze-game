@@ -77,13 +77,24 @@ int main()
         std::cout << ex.what() << '\n';
     }
 
-    Field field1;
-    field1.setPassable({5, 5}, false);
-    Field field2(17, 17);
-    field2.setEntry({5, 8});
-    Field field3(field1);
-    field1 = field2;
-    std::cout << field3.getCell({5, 5}).getPassable() << "\n";
-    std::cout << field1.getEntry().getX() << " " << field1.getEntry().getY() << "\n";
+    {
+        Field field1;
+        field1.setPassable({5, 5}, false);
+        Field field2(17, 17);
+        field2.setEntry({5, 8});
+        Field field3(field1);
+        field1 = field2;
+        std::cout << field3.getCell({5, 5}).getPassable() << "\n";
+        std::cout << field1.getEntry().getX() << " " << field1.getEntry().getY() << "\n\n";
+    }
+
+    {
+        Field field = Field(6, 6);
+        std::cout << field.getExit().getX() << " " << field.getExit().getY() << "\n";
+        field = Field(18, 18);
+        std::cout << field.getExit().getX() << " " << field.getExit().getY() << "\n";
+
+
+    }
     return 0;
 }
