@@ -8,18 +8,9 @@
 
 int main()
 {
-    /*// LAB1
-    Player my_player;
-    std::cout << my_player.getValue(Option::HEALTH) << ": HP| " << my_player.getValue(Option::POINTS) << ": POINTS|\n";
-    my_player.setValue(Option::HEALTH, 90);
-    my_player.getValue(Option::HEALTH);
-    std::cout << my_player.getValue(Option::HEALTH) << ": HP|\n";
-    my_player.setValue(Option::POINTS, 500000);
-    std::cout << my_player.getValue(Option::POINTS) << ": POINTS|\n";
-    */
-
     // LAB2
     // Cell test
+
     {
         IEvent *event = new PointsEvent;
         Cell cell(false, event);
@@ -60,6 +51,9 @@ int main()
         controller.move(Direction::UP);
         coord = controller.getCoordinates();
         std::cout << coord.getX() << " " << coord.getY() << " AFTER INVALID MOVING\n";
+        controller.move(Direction::DOWN);
+        coord = controller.getCoordinates();
+        std::cout << coord.getX() << " " << coord.getY() << "\n";
         coord = field.getExit();
         std::cout << coord.getX() << " " << coord.getY() << " EXIT\n\n\n";
     }
@@ -82,5 +76,14 @@ int main()
     {
         std::cout << ex.what() << '\n';
     }
+
+    Field field1;
+    field1.setPassable({5, 5}, false);
+    Field field2(17, 17);
+    field2.setEntry({5, 8});
+    Field field3(field1);
+    field1 = field2;
+    std::cout << field3.getCell({5, 5}).getPassable() << "\n";
+    std::cout << field1.getEntry().getX() << " " << field1.getEntry().getY() << "\n";
     return 0;
 }

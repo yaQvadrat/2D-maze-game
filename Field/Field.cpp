@@ -15,12 +15,12 @@ bool Field::checkCoordinates(Coordinates coord) const
 Field::Field(int width, int height): width{width}, height{height}
 {
     if (!checkFieldSize(width, height))
-        throw std::invalid_argument("Invalid field size");
+        this->width = this->height = DEF_SIZE;
     entry = {DEF_ENTRY, DEF_ENTRY};
-    exit = {width - 1, height - 1};
-    cells = new Cell*[width];
-    for (size_t x = 0; x < width; ++x)
-        cells[x] = new Cell[height];
+    exit = {this->width - 1, this->height - 1};
+    cells = new Cell*[this->width];
+    for (size_t x = 0; x < this->width; ++x)
+        cells[x] = new Cell[this->height];
 }
 
 Field::~Field()
@@ -28,6 +28,38 @@ Field::~Field()
     for (size_t x = 0; x < width; ++x)
         delete [] cells[x];
     delete [] cells;
+}
+
+Field::Field(const Field &other)
+    : width{other.width}, height{other.height},
+      entry{other.entry}, exit{other.exit},
+      cells{new Cell*[other.width]}
+{
+    for (size_t x = 0; x < width; ++x) {
+        cells[x] = new Cell[height];
+        for (size_t y = 0; y < height; ++y)
+            cells[x][y] = other.cells[x][y];
+    }
+}
+
+Field& Field::operator=(const Field &other)
+{
+    if (this != &other) {
+        for (size_t x = 0; x < width; ++x)
+            delete [] cells[x];
+        delete [] cells;
+        width = other.width;
+        height = other.height;
+        entry = other.entry;
+        exit = other.exit;
+        cells = new Cell*[width];
+        for (size_t x = 0; x < width; ++x) {
+            cells[x] = new Cell[height];
+            for (size_t y = 0; y < height; ++y)
+                cells[x][y] = other.cells[x][y];
+        }
+    }
+    return *this;
 }
 
 const Cell& Field::getCell(Coordinates coord) const
