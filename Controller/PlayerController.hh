@@ -3,6 +3,7 @@
 
 #include "Coordinates.hh"
 #include "Direction.hh"
+#include "../Characteristic/Option.hh"
 
 class Field;
 class Player;
@@ -17,8 +18,8 @@ public:
     PlayerController(Field &field, Player &player);
 
     Coordinates getCoordinates();
-    Player& getPlayer();
-    Field& getField();
+
+    void change(Option opt, int offset);
 
     void move(Direction direction);
 };

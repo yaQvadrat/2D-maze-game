@@ -7,12 +7,10 @@ ThrowAsideEvent::ThrowAsideEvent(Direction direction)
 
 void ThrowAsideEvent::triggerEvent(PlayerController &controller)
 {
-    if (use_count != 0) {
-        Cell &cell = controller.getField().getCell(controller.getCoordinates());
-        cell = Cell(cell.getPassable(), nullptr);
+    if (use_count == 0) {
+        use_count++;
+        controller.move(direction);
     }
-    use_count++;
-    controller.move(direction);
 }
 
 ThrowAsideEvent* ThrowAsideEvent::clone()

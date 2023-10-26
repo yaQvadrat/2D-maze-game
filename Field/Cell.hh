@@ -2,6 +2,7 @@
 #define CELL_HH
 
 class IEvent;
+class PlayerController;
 
 class Cell
 {
@@ -20,7 +21,8 @@ public:
     void setPassable(bool passable = true);
 
     bool getPassable() const;
-    IEvent* getEvent();
+    
+    void triggerEvent(PlayerController& controller);
 };
 
 #endif

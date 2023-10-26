@@ -50,7 +50,11 @@ bool Cell::getPassable() const
     return passable;
 }
 
-IEvent* Cell::getEvent()
+void Cell::triggerEvent(PlayerController& controller)
 {
-    return event;
+    if (event) {
+        event->triggerEvent(controller);
+        delete event;
+        event = nullptr;
+    }
 }

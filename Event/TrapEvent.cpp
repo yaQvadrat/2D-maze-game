@@ -10,10 +10,7 @@ TrapEvent::TrapEvent(int damage)
 
 void TrapEvent::triggerEvent(PlayerController &controller)
 {
-    Characteristic &health = controller.getPlayer().get(Option::HEALTH);
-    health.setValue(health.getValue() - damage);
-    Cell &cell = controller.getField().getCell(controller.getCoordinates());
-    cell = Cell(cell.getPassable(), nullptr);
+    controller.change(Option::HEALTH, -damage);
 }
 
 TrapEvent* TrapEvent::clone()

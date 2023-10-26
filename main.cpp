@@ -37,18 +37,15 @@ int main()
         field.getCell({2, 0}) = Cell(true, new ThrowAsideEvent(Direction::LEFT));
         Player player;
         PlayerController controller(field, player);
-        std::cout << field.getCell({1, 0}).getEvent() << "\n";
         std::cout << controller.getCoordinates() << "\n";
         controller.move(Direction::RIGHT);
         std::cout << controller.getCoordinates() << "\n";
-        std::cout << field.getCell({1, 0}).getEvent() << "\n";
         field.getCell({0, 0}) = Cell(true, new ThrowAsideEvent(Direction::UP));
         controller.move(Direction::LEFT);
         std::cout << controller.getCoordinates() << "\n";
         field.getCell({0, 2}) = Cell(true, new ThrowAsideEvent(Direction::LEFT));
         controller.move(Direction::UP);
-        std::cout << controller.getCoordinates() << "\n";
-        std::cout << field.getCell({1, 0}).getEvent() << "\n\n\n";
+        std::cout << controller.getCoordinates() << "\n\n\n";
     }
     // FieldCreator + different events test
     {
@@ -84,6 +81,6 @@ int main()
     controller.move(Direction::DOWN);
     controller.move(Direction::LEFT);
     std::cout << "Health:" << player.get(Option::HEALTH).getValue() << "\n";
-    std::cout << std::boolalpha << controller.getPlayer().isAlive() << "\n";
+    std::cout << std::boolalpha << player.isAlive() << "\n";
     return 0;
 }

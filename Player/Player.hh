@@ -3,6 +3,7 @@
 
 #include "../Characteristic/Health.hh"
 #include "../Characteristic/Points.hh"
+#include "../Characteristic/Option.hh"
 #include <map>
 #define MAX_HEALTH 100
 #define MIN_HEALTH 0
@@ -10,8 +11,6 @@
 #define MIN_POINTS 0
 #define DEF_HEALTH 100
 #define DEF_POINTS 0
-
-enum class Option {HEALTH, POINTS};
 
 class Player
 {
