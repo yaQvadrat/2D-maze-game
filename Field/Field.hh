@@ -28,7 +28,6 @@ public:
     Field& operator = (const Field &other);
     Field(Field &&other);
     Field& operator = (Field &&other);
-;
 
     void setEntry(Coordinates entry);
     void setExit(Coordinates exit);

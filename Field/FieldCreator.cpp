@@ -10,7 +10,7 @@ Field FieldCreator::firstLevel()
     field.setPassableBlock(false, {1, 3}, {3, 3});
     field.setPassableBlock(false, {1, 0}, {3, 0});
     field.setEntry({0, 4});
-    field.setExit({0, 4});
+    field.setExit({4, 0});
     field.getCell({0, 3}) = Cell(true, new ThrowAsideEvent(Direction::UP));
     field.getCell({1, 1}) = Cell(true, new ThrowAsideEvent(Direction::RIGHT));
     field.getCell({2, 1}) = Cell(true, new ThrowAsideEvent(Direction::RIGHT));
