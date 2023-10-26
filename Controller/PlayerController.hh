@@ -1,11 +1,11 @@
 #ifndef PLAYERCONTROLLER_HH
 #define PLAYERCONTROLLER_HH
 
-#include "../Field/Field.hh"
-#include "../Player/Player.hh"
 #include "Coordinates.hh"
+#include "Direction.hh"
 
-enum class Direction {UP, DOWN, LEFT, RIGHT};
+class Field;
+class Player;
 
 class PlayerController
 {
@@ -17,6 +17,8 @@ public:
     PlayerController(Field &field, Player &player);
 
     Coordinates getCoordinates();
+    Player& getPlayer();
+    Field& getField();
 
     void move(Direction direction);
 };

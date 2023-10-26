@@ -23,9 +23,9 @@ class Player
     };
 
 public:
-    int getValue(Option opt);
+    Characteristic& get(Option opt);
 
-    void setValue(Option opt, int value);
+    bool isAlive();
 };
 
 #endif

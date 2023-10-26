@@ -17,8 +17,12 @@ public:
     Characteristic(int min_value, int max_value, int value);
 
     void setValue(int value);
+    void setMinValue(int value);
+    void setMaxValue(int value);
 
     int getValue() const;
+    int getMinValue();
+    int getMaxValue();
 };
 
 #endif

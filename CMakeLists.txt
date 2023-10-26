@@ -7,10 +7,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(PLAYER Player/Player.cpp)
-set(CONTROLLER Controller/Coordinates.cpp Controller/PlayerController.cpp)
+set(CONTROLLER Controller/Coordinates.cpp Controller/PlayerController.cpp Controller/Direction.cpp)
 set(CHARACTERISTIC Characteristic/Characteristic.cpp Characteristic/Health.cpp Characteristic/Points.cpp)
-set(FIELD Field/Cell.cpp Field/Field.cpp)
-set(EVENT Event/IEvent.cpp Event/PointsEvent.cpp)
+set(FIELD Field/Field.cpp Field/Cell.cpp Field/FieldCreator.cpp)
+set(EVENT Event/IEvent.cpp Event/PointsEvent.cpp Event/TrapEvent.cpp Event/ThrowAsideEvent.cpp)
 
 add_executable(main main.cpp    ${PLAYER}
                                 ${CONTROLLER}

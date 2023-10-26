@@ -1,4 +1,5 @@
 #include "Cell.hh"
+#include "../Event/IEvent.hh"
 #include <iostream>
 
 Cell::Cell(bool passable, IEvent *event)
@@ -13,7 +14,7 @@ Cell::Cell(const Cell &other)
     : passable{other.passable},
       event{other.event ? other.event->clone() : nullptr}{}
 
-Cell& Cell::operator=(const Cell &other)
+Cell& Cell::operator = (const Cell &other)
 {
     if (this != &other) {
         Cell temp(other);
@@ -24,13 +25,13 @@ Cell& Cell::operator=(const Cell &other)
 }
 
 Cell::Cell(Cell &&other)
-    :passable{true}, event{nullptr}
+    :passable{true},
+     event{nullptr}
 {
-    std::swap(passable, other.passable);
-    std::swap(event, other.event);
+    *this = std::move(other);
 }
 
-Cell& Cell::operator=(Cell &&other)
+Cell& Cell::operator = (Cell &&other)
 {
     if (this != &other) {
         std::swap(passable, other.passable);
@@ -47,4 +48,9 @@ void Cell::setPassable(bool passable)
 bool Cell::getPassable() const
 {
     return passable;
+}
+
+IEvent* Cell::getEvent()
+{
+    return event;
 }

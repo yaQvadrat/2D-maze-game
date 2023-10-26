@@ -2,11 +2,17 @@
 #define POINTS_EVENT_HH
 
 #include "IEvent.hh"
-#include <iostream>
+
+#define DEF_POINTS_OFFSET 10
 
 class PointsEvent: public IEvent
 {
-    void triggerEvent() override;
+    int points_offset;
+
+public:
+    PointsEvent(int points_offset = DEF_POINTS_OFFSET);
+
+    void triggerEvent(PlayerController &controller) override;
 
     PointsEvent* clone() override;
 };

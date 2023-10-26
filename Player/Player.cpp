@@ -1,12 +1,11 @@
 #include "Player.hh"
 
-int Player::getValue(Option opt)
+Characteristic& Player::get(Option opt)
 {
-    return mapping.at(opt).getValue();
+    return mapping.at(opt);
 }
 
-void Player::setValue(Option opt, int value)
+bool Player::isAlive()
 {
-    mapping.at(opt).setValue(value);
+    return health.getValue() != health.getMinValue();
 }
-

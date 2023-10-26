@@ -21,9 +21,31 @@ void Characteristic::setValue(int value)
         this->value = value;
 }
 
+void Characteristic::setMinValue(int value)
+{
+    if (value < max_value)
+        min_value = value;
+}
+
+void Characteristic::setMaxValue(int value)
+{
+    if (value > min_value)
+        max_value = value;
+}
+
 int Characteristic::getValue() const
 {
     return value;
+}
+
+int Characteristic::getMinValue()
+{
+    return min_value;
+}
+
+int Characteristic::getMaxValue()
+{
+    return max_value;
 }
 
 int Characteristic::check(int value)

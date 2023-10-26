@@ -1,4 +1,7 @@
 #include "PlayerController.hh"
+#include "../Field/Field.hh"
+#include "../Field/Cell.hh"
+#include "../Event/IEvent.hh"
 
 PlayerController::PlayerController(Field &field, Player &player)
     : field{field}, player{player}, coordinates{field.getEntry()}{}
@@ -6,6 +9,16 @@ PlayerController::PlayerController(Field &field, Player &player)
 Coordinates PlayerController::getCoordinates()
 {
     return coordinates;
+}
+
+Player& PlayerController::getPlayer()
+{
+    return player;
+}
+
+Field& PlayerController::getField()
+{
+    return field;
 }
 
 void PlayerController::move(Direction direction)
@@ -31,4 +44,8 @@ void PlayerController::move(Direction direction)
     }
     if(!(field.checkCoordinates(coordinates) && field.getCell(coordinates).getPassable()))
         coordinates = before_change;
+
+    IEvent* event = field.getCell(coordinates).getEvent();
+    if (event)
+        event->triggerEvent(*this);
 }
