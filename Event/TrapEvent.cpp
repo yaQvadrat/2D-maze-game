@@ -8,7 +8,7 @@ TrapEvent::TrapEvent(int damage)
     : damage{damage >= 0 ? damage : -damage}{}
 
 
-void TrapEvent::triggerEvent(PlayerController &controller)
+void TrapEvent::trigger(PlayerController &controller)
 {
     controller.change(Option::HEALTH, -damage);
 }

@@ -5,7 +5,7 @@
 ThrowAsideEvent::ThrowAsideEvent(Direction direction)
     : direction{direction}{}
 
-void ThrowAsideEvent::triggerEvent(PlayerController &controller)
+void ThrowAsideEvent::trigger(PlayerController &controller)
 {
     if (use_count == 0) {
         use_count++;

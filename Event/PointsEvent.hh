@@ -12,7 +12,7 @@ class PointsEvent: public IEvent
 public:
     PointsEvent(int points_offset = DEF_POINTS_OFFSET);
 
-    void triggerEvent(PlayerController &controller) override;
+    void trigger(PlayerController &controller) override;
 
     PointsEvent* clone() override;
 };

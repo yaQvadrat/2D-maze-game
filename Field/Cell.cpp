@@ -53,7 +53,7 @@ bool Cell::getPassable() const
 void Cell::triggerEvent(PlayerController& controller)
 {
     if (event) {
-        event->triggerEvent(controller);
+        event->trigger(controller);
         delete event;
         event = nullptr;
     }

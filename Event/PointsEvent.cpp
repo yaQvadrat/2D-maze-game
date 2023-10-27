@@ -6,7 +6,7 @@
 
 PointsEvent::PointsEvent(int points_offset): points_offset{points_offset}{}
 
-void PointsEvent::triggerEvent(PlayerController &controller)
+void PointsEvent::trigger(PlayerController &controller)
 {
     controller.change(Option::POINTS, points_offset);
 }

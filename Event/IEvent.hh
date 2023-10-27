@@ -7,7 +7,7 @@ class IEvent
 {
 public:
     virtual ~IEvent() = 0;
-    virtual void triggerEvent(PlayerController &controller) = 0;
+    virtual void trigger(PlayerController &controller) = 0;
     virtual IEvent* clone() = 0;
 };
 

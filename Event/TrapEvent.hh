@@ -12,7 +12,7 @@ class TrapEvent: public IEvent
 public:
     TrapEvent(int damage = DEF_DAMAGE_IN_TRAP_EVENT);
 
-    void triggerEvent(PlayerController &controller) override;
+    void trigger(PlayerController &controller) override;
 
     TrapEvent* clone() override;
 };

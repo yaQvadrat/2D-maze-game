@@ -13,7 +13,7 @@ class ThrowAsideEvent: public IEvent
 public:
     ThrowAsideEvent(Direction direction);
 
-    void triggerEvent(PlayerController &controller) override;
+    void trigger(PlayerController &controller) override;
 
     ThrowAsideEvent* clone() override;
 };

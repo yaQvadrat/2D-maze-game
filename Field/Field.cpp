@@ -33,15 +33,11 @@ Field::~Field()
 }
 
 Field::Field(const Field &other)
-    : width{other.width}, height{other.height},
-      entry{other.entry}, exit{other.exit},
-      cells{new Cell*[other.width]}
+    : width{0}, height{0},
+      entry{Coordinates()}, exit{Coordinates()},
+      cells{nullptr}
 {
-    for (int x = 0; x < width; ++x) {
-        cells[x] = new Cell[height];
-        for (int y = 0; y < height; ++y)
-            cells[x][y] = other.cells[x][y];
-    }
+    *this = other;
 }
 
 Field& Field::operator = (const Field &other)
@@ -65,7 +61,7 @@ Field& Field::operator = (const Field &other)
 }
 
 Field::Field(Field &&other)
-    : width{std::move(other.width)}, height{},
+    : width{0}, height{0},
       entry{Coordinates()}, exit{Coordinates()},
       cells{nullptr} 
 {
