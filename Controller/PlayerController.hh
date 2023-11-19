@@ -18,6 +18,7 @@ public:
     PlayerController(Field &field, Player &player);
 
     Coordinates getCoordinates();
+    void setCoordinates(Coordinates coordinates);
 
     void change(Option opt, int offset);
 

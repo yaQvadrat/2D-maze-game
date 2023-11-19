@@ -2,12 +2,14 @@
 #define FIELD_CREATOR_HH
 
 #include "Field.hh"
+#include <memory>
 
 class FieldCreator
 {
 public:
-    Field firstLevel();
-    Field secondLevel();
+    std::unique_ptr<Field> getLevel(int level);
+    std::unique_ptr<Field> firstLevel();
+    std::unique_ptr<Field> secondLevel();
 };
 
 #endif

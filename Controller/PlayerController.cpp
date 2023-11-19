@@ -12,6 +12,12 @@ Coordinates PlayerController::getCoordinates()
     return coordinates;
 }
 
+void PlayerController::setCoordinates(Coordinates coordinates)
+{
+    if (field.checkCoordinates(coordinates) && field.getCell(coordinates).getPassable())
+        this->coordinates = coordinates;
+}
+
 void PlayerController::change(Option opt, int offset)
 {
     player.get(opt).setValue(player.get(opt).getValue() + offset);

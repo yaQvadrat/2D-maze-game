@@ -40,7 +40,7 @@ Field::Field(const Field &other)
     *this = other;
 }
 
-Field& Field::operator = (const Field &other)
+Field& Field::operator=(const Field &other)
 {
     if (this != &other) {
         for (int x = 0; x < width; ++x)
@@ -68,7 +68,7 @@ Field::Field(Field &&other)
     *this = std::move(other);
 }
 
-Field& Field::operator = (Field &&other)
+Field& Field::operator=(Field &&other)
 {
     if (this != &other) {
         std::swap(width, other.width);

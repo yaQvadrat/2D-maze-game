@@ -7,7 +7,7 @@
 
 class ThrowAsideEvent: public IEvent
 {
-    size_t use_count = 0;
+    int use_count = 0;
     Direction direction;
 
 public:

@@ -21,16 +21,26 @@ void Characteristic::setValue(int value)
         this->value = value;
 }
 
-void Characteristic::setMinValue(int value)
+void Characteristic::changeMinValue(int value)
 {
     if (value < max_value)
         min_value = value;
 }
 
-void Characteristic::setMaxValue(int value)
+void Characteristic::changeMaxValue(int value)
 {
     if (value > min_value)
         max_value = value;
+}
+
+void Characteristic::setMinValue()
+{
+    value = min_value;
+}
+
+void Characteristic::setMaxValue()
+{
+    value = max_value;
 }
 
 int Characteristic::getValue() const

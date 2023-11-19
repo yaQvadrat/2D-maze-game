@@ -1,4 +1,5 @@
 #include "Player.hh"
+#include <iostream>
 
 Characteristic& Player::get(Option opt)
 {

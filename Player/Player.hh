@@ -5,12 +5,12 @@
 #include "../Characteristic/Points.hh"
 #include "../Characteristic/Option.hh"
 #include <map>
-#define MAX_HEALTH 100
-#define MIN_HEALTH 0
-#define MAX_POINTS 1000
-#define MIN_POINTS 0
-#define DEF_HEALTH 100
-#define DEF_POINTS 0
+constexpr int MAX_HEALTH = 100;
+constexpr int MIN_HEALTH = 0;
+constexpr int MAX_POINTS = 1000;
+constexpr int MIN_POINTS = 0;
+constexpr int DEF_HEALTH = 100;
+constexpr int DEF_POINTS = 0;
 
 class Player
 {
