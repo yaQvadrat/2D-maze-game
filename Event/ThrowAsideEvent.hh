@@ -16,6 +16,8 @@ public:
     void trigger(PlayerController &controller) override;
 
     ThrowAsideEvent* clone() override;
+
+    Direction getDirection() const;
 };
 
 #endif

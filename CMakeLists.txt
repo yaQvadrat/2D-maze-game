@@ -15,6 +15,8 @@ set(EVENT Event/IEvent.cpp Event/PointsEvent.cpp Event/TrapEvent.cpp Event/Throw
 set(INPUT Input/IConfigReader.cpp Input/FileConfigReader.cpp Input/IInputReader.cpp Input/ConsoleInputReader.cpp Input/InputHandler.cpp)
 set(GAME Game/Game.cpp Game/GameClient.cpp)
 set(COMMAND Command/ExitCommand.cpp Command/ICommand.cpp Command/MoveCommand.cpp Command/RestartCommand.cpp)
+set(OBSEVER Observer/IObserver.cpp Observer/ISubject.cpp)
+set(GAMEVIEW Game/IGameView.cpp Game/GameViewObserver.cpp Game/ConsoleGameView.cpp)
 
 add_executable(main main.cpp    ${PLAYER}
                                 ${CONTROLLER}
@@ -23,4 +25,6 @@ add_executable(main main.cpp    ${PLAYER}
                                 ${EVENT}
                                 ${INPUT}
                                 ${GAME}
-                                ${COMMAND})
+                                ${COMMAND}
+                                ${GAMEVIEW}
+                                ${OBSERVER})

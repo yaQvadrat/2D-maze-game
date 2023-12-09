@@ -1,9 +1,26 @@
 #include "Game.hh"
 #include "../Player/Player.hh"
+#include "../Observer/IObserver.hh"
 
 Game::Game()
     : controller{field, player}, 
       state{GameState::MENU}{}
+
+void Game::attachObserver(IObserver *observer)
+{
+    observer_list.push_back(observer);
+}
+
+void Game::detachObserver(IObserver *observer)
+{
+    observer_list.remove(observer);
+}
+
+void Game::notify()
+{
+    for (auto observer: observer_list)
+        observer->update();
+}
 
 void Game::setLevel(int level)
 {
@@ -11,27 +28,33 @@ void Game::setLevel(int level)
     controller.setCoordinates(field.getEntry());
     player.get(Option::HEALTH).setMaxValue();
     player.get(Option::POINTS).setMinValue();
+    notify();
 }
 
 void Game::movePlayer(Direction direction)
 {
     controller.move(direction);
-    std::cout << controller.getCoordinates() << " HP:";
-    std::cout << player.get(Option::HEALTH).getValue() << " POINTS:";
-    std::cout << player.get(Option::POINTS).getValue() << "\n";
     if (!player.isAlive()) {
-        state = GameState::DEFEAT;
+        setState(GameState::DEFEAT);
     } else if (controller.getCoordinates() == field.getExit()) {
-        state = GameState::VICTORY;
+        setState(GameState::VICTORY);
+    } else {
+        notify();
     }
 }
 
 void Game::setState(GameState new_state)
 {
     state = new_state;
+    notify();
 }
 
 GameState Game::getState()
 {
     return state;
+}
+
+const PlayerController& Game::getController()
+{
+    return controller;
 }

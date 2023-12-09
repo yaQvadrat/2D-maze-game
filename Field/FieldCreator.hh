@@ -10,6 +10,7 @@ public:
     std::unique_ptr<Field> getLevel(int level);
     std::unique_ptr<Field> firstLevel();
     std::unique_ptr<Field> secondLevel();
+    std::unique_ptr<Field> thirdLevel();
 };
 
 #endif

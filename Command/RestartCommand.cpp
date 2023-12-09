@@ -3,5 +3,5 @@
 
 void RestartCommand::execute(Game &game)
 {
-    game.setState(GameState::MENU);
+    game.setState(GameState::RESTART);
 }

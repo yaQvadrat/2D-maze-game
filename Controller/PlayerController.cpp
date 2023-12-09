@@ -7,7 +7,7 @@
 PlayerController::PlayerController(Field &field, Player &player)
     : field{field}, player{player}, coordinates{field.getEntry()}{}
 
-Coordinates PlayerController::getCoordinates()
+Coordinates PlayerController::getCoordinates() const
 {
     return coordinates;
 }
@@ -48,4 +48,14 @@ void PlayerController::move(Direction direction)
         coordinates = before_change;
 
     field.getCell(coordinates).triggerEvent(*this);
+}
+
+const Field& PlayerController::getField() const
+{
+    return field;
+}
+
+const Player& PlayerController::getPlayer() const
+{
+    return player;
 }

@@ -7,7 +7,7 @@
 #include <map>
 constexpr int MAX_HEALTH = 100;
 constexpr int MIN_HEALTH = 0;
-constexpr int MAX_POINTS = 1000;
+constexpr int MAX_POINTS = 5000;
 constexpr int MIN_POINTS = 0;
 constexpr int DEF_HEALTH = 100;
 constexpr int DEF_POINTS = 0;
@@ -22,7 +22,7 @@ class Player
     };
 
 public:
-    Characteristic& get(Option opt);
+    Characteristic& get(Option opt) const;
 
     bool isAlive();
 };

@@ -23,6 +23,7 @@ public:
     bool getPassable() const;
     
     void triggerEvent(PlayerController& controller);
+    const IEvent* getEvent();
 };
 
 #endif

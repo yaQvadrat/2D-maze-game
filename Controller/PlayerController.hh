@@ -17,12 +17,15 @@ class PlayerController
 public:
     PlayerController(Field &field, Player &player);
 
-    Coordinates getCoordinates();
+    Coordinates getCoordinates() const;
     void setCoordinates(Coordinates coordinates);
 
     void change(Option opt, int offset);
 
     void move(Direction direction);
+
+    const Player& getPlayer() const;
+    const Field& getField() const;
 };
 
 #endif

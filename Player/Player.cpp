@@ -1,7 +1,7 @@
 #include "Player.hh"
 #include <iostream>
 
-Characteristic& Player::get(Option opt)
+Characteristic& Player::get(Option opt) const
 {
     return mapping.at(opt);
 }

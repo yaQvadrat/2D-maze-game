@@ -58,3 +58,8 @@ void Cell::triggerEvent(PlayerController& controller)
         event = nullptr;
     }
 }
+
+const IEvent* Cell::getEvent()
+{
+    return event;
+}

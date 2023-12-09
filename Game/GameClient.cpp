@@ -4,31 +4,20 @@
 #include <thread>
 #include <string>
 
-GameClient::GameClient(IInputReader& input_reader, IConfigReader &config_reader)
-    : input_reader{input_reader}, config_reader{config_reader},
-      input_handler{config_reader}{}
+
+GameClient::GameClient(IInputReader& input_reader, IConfigReader &config_reader, IGameView &displayer)
+    : input_reader{input_reader}, 
+      menu_flag{false},
+      input_handler{config_reader},
+      game_view{displayer, game}{}
 
 void GameClient::menu()
 {
-    constexpr const char *VICTORY_SIGNAL = "VICTORY\n\n";
-    constexpr const char *DEFEAT_SIGNAL = "DEFEAT\n\n";
     constexpr int FIRST = 1;
     constexpr int SECOND = 2;
-    GameState state = game.getState();
-    std::string extra_output;
-    switch (state)
-    {
-    case GameState::VICTORY:
-        extra_output = VICTORY_SIGNAL;
-        break;
-    
-    case GameState::DEFEAT:
-        extra_output = DEFEAT_SIGNAL;
-        break;
-    }
-    std::cout << extra_output << "MENU\n1. First Level\n2. Second Level\n3. Any another key to Exit\n";
-    char choice = input_reader.read();
-    switch (choice)
+    constexpr int THIRD = 3;
+    while (!menu_flag) {}
+    switch (input_key)
     {
     case '1':
         game.setLevel(FIRST);
@@ -38,43 +27,53 @@ void GameClient::menu()
         game.setLevel(SECOND);
         break;
 
-    default:
+    case '3':
+        game.setLevel(THIRD);
+        break;
+
+    case 'q':
         game.setState(GameState::QUIT);
+        menu_flag = false;
+        return;
+    
+    default:
+        menu_flag = false;
         return;
     }
-    std::cout << "\nLevel ready\n";
     game.setState(GameState::IN_PROGRESS);
+    menu_flag = false;
 }
 
 void GameClient::mainLoop()
 {
-    std::thread game_status_thread(
-        [this]
-        {
-            while (game.getState() != GameState::QUIT) {
-                switch(game.getState())
-                {
-                case GameState::MENU:
-                case GameState::VICTORY:
-                case GameState::DEFEAT:
-                    menu();
-                }
-            }
-        }
-    );
-    game_status_thread.detach();
-
+    game.setState(GameState::MENU);
     std::thread control_input_thread(
         [this]
         {
-            char key;
             while (game.getState() != GameState::QUIT) {
+                input_key = input_reader.read();
+
                 if (game.getState() == GameState::IN_PROGRESS) {
-                    key = input_reader.read();
-                    input_handler.handleInput(key, game);
+                    input_handler.handleInput(input_key, game);
+                    continue;
                 }
+
+                menu_flag = true;
+                while (menu_flag) {}
             }
         }
     );
+
+    while (game.getState() != GameState::QUIT) {
+        switch(game.getState())
+        {
+        case GameState::MENU:
+        case GameState::VICTORY:
+        case GameState::DEFEAT:
+        case GameState::RESTART:
+            menu();       
+        }
+    }
+
     control_input_thread.join();
 }

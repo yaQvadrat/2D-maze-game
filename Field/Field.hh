@@ -34,10 +34,10 @@ public:
     void setPassableBlock(bool passable, Coordinates dwn_lft, Coordinates up_rght);
 
     Cell& getCell(Coordinates coord) const;
-    Coordinates getEntry();
-    Coordinates getExit();
-    int getWidth();
-    int getHeight();
+    Coordinates getEntry() const;
+    Coordinates getExit() const;
+    int getWidth() const;
+    int getHeight() const;
 
     bool checkCoordinates(Coordinates coord) const;
 };

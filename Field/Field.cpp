@@ -111,22 +111,22 @@ void Field::setPassableBlock(bool passable, Coordinates dwn_lft, Coordinates up_
     }
 }
 
-Coordinates Field::getEntry()
+Coordinates Field::getEntry() const
 {
     return entry;
 }
 
-Coordinates Field::getExit()
+Coordinates Field::getExit() const
 {
     return exit;
 }
 
-int Field::getWidth()
+int Field::getWidth() const
 {
     return width;
 }
 
-int Field::getHeight()
+int Field::getHeight() const
 {
     return height;
 }

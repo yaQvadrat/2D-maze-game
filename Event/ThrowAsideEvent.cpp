@@ -17,3 +17,8 @@ ThrowAsideEvent* ThrowAsideEvent::clone()
 {
     return new ThrowAsideEvent(*this);
 }
+
+Direction ThrowAsideEvent::getDirection() const
+{
+    return direction;
+}
