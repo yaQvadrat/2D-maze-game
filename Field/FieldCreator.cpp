@@ -76,15 +76,19 @@ std::unique_ptr<Field> FieldCreator::thirdLevel()
     field->setEntry({15, 0});
     field->setPassableBlock(false, {0, 5}, {4, 7});
     field->setPassableBlock(false, {7, 5}, {15, 7});
-    field->setPassableBlock(false, {7, 7}, {9, 13});
+    field->setPassableBlock(false, {7, 7}, {8, 13});
     field->setPassableBlock(false, {11, 10}, {13, 15});
     field->getCell({14, 15}) = Cell(true, new TrapEvent(100));
     field->getCell({14, 15}) = Cell(true, new TrapEvent(100));
     field->getCell({5, 15}) = Cell(true, new TrapEvent(100));
-    for (int i = 5; i <= 14; ++i)
+    for (int i = 5; i < 14; ++i)
         field->getCell({5, i}) = Cell(true, new ThrowAsideEvent(Direction::UP));
     for (int i = 0; i <= 4; ++i) {
         for (int j = 0; j <= 4; ++j)
+            field->getCell({i, j}) = Cell(true, new PointsEvent(100));
+    }
+    for (int i = 0; i <= 4; ++i) {
+        for (int j = 9; j <= 15; ++j)
             field->getCell({i, j}) = Cell(true, new PointsEvent(100));
     }
     field->getCell({2, 4}) = Cell(true, new ThrowAsideEvent(Direction::DOWN));

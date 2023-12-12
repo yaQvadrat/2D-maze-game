@@ -7,3 +7,8 @@ void MoveCommand::execute(Game &game)
 {
     game.movePlayer(direction);
 }
+
+Direction MoveCommand::getDirection()
+{
+    return direction;
+}

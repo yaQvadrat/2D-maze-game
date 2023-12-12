@@ -9,6 +9,7 @@ class MoveCommand: public ICommand
     Direction direction;
 public:
     MoveCommand(Direction direction);
+    Direction getDirection();
 
     void execute(Game &game) override;
 };

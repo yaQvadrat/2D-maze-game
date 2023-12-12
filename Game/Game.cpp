@@ -1,6 +1,10 @@
 #include "Game.hh"
 #include "../Player/Player.hh"
 #include "../Observer/IObserver.hh"
+#include "../Logger/ILogger.hh"
+#include "../Logger/DefeatMessage.hh"
+#include "../Logger/NewGameMessage.hh"
+#include "../Logger/WinMessage.hh"
 
 Game::Game()
     : controller{field, player}, 
@@ -28,7 +32,7 @@ void Game::setLevel(int level)
     controller.setCoordinates(field.getEntry());
     player.get(Option::HEALTH).setMaxValue();
     player.get(Option::POINTS).setMinValue();
-    notify();
+    sendLogMessage(NewGameMessage(field.getWidth(), field.getHeight(), field.getEntry()));
 }
 
 void Game::movePlayer(Direction direction)
@@ -36,8 +40,10 @@ void Game::movePlayer(Direction direction)
     controller.move(direction);
     if (!player.isAlive()) {
         setState(GameState::DEFEAT);
+        sendLogMessage(DefeatMessage(controller.getCoordinates()));
     } else if (controller.getCoordinates() == field.getExit()) {
         setState(GameState::VICTORY);
+        sendLogMessage(WinMessage(player.get(Option::HEALTH).getValue(), player.get(Option::POINTS).getValue()));
     } else {
         notify();
     }
@@ -57,4 +63,20 @@ GameState Game::getState()
 const PlayerController& Game::getController()
 {
     return controller;
+}
+
+void Game::attachLogger(ILogger *logger)
+{
+    logger_list.push_back(logger);
+}
+
+void Game::detachLogger(ILogger *logger)
+{
+    logger_list.remove(logger);
+}
+
+void Game::sendLogMessage(const AbstractLogMessage &msg)
+{
+    for (auto logger: logger_list)
+        logger->logMessage(msg);
 }

@@ -4,7 +4,7 @@
 #include "../Input/InputHandler.hh"
 #include "Game.hh"
 #include "GameViewObserver.hh"
-#include <memory>
+#include "../Logger/GameLogger.hh"
 
 class IInputReader;
 class IConfigReader;
@@ -16,6 +16,7 @@ class GameClient
     InputHandler input_handler;
     Game game;
     GameViewObserver game_view;
+    GameLogger logger;
     bool menu_flag;
     char input_key;
 
@@ -23,7 +24,6 @@ class GameClient
 
 public:
     GameClient(IInputReader &input_reader, IConfigReader &config_reader, IGameView &displayer);
-
     void mainLoop();
 };
 

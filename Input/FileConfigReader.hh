@@ -7,9 +7,7 @@
 #include <vector>
 #include <set>
 
-#define CONFIG_DELIM '='
-
-enum class Command {MVUP = 0, MVDOWN, MVLEFT, MVRIGHT, EXIT, RESTART, COUNT};
+constexpr const char CONFIG_DELIM = '=';
 
 class FileConfigReader: public IConfigReader
 {

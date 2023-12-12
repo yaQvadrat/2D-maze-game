@@ -6,6 +6,8 @@
 
 class ICommand;
 
+enum class Command {MVUP = 0, MVDOWN, MVLEFT, MVRIGHT, EXIT, RESTART, COUNT};
+
 class IConfigReader
 {
 public:
