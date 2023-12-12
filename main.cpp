@@ -2,11 +2,7 @@
 #include "Input/ConsoleInputReader.hh"
 #include "Input/FileConfigReader.hh"
 #include "Game/ConsoleGameView.hh"
-#include "Logger/GameLogger.hh"
 #include <iostream>
-#include <fstream>
-#include <list>
-#include <memory>
 
 int main()
 {

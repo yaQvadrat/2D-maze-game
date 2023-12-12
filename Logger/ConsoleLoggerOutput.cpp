@@ -1,7 +1,7 @@
 #include "ConsoleLoggerOutput.hh"
 #include "AbstractLogMessage.hh"
 
-void ConsoleLoggerOutput::log(const AbstractLogMessage &msg)
+void ConsoleLoggerOutput::log(const std::string &logs)
 {
-    std::cout << "\r" << msg;
+    std::cout << logs;
 }

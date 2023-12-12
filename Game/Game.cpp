@@ -39,11 +39,11 @@ void Game::movePlayer(Direction direction)
 {
     controller.move(direction);
     if (!player.isAlive()) {
-        setState(GameState::DEFEAT);
         sendLogMessage(DefeatMessage(controller.getCoordinates()));
+        setState(GameState::DEFEAT);
     } else if (controller.getCoordinates() == field.getExit()) {
-        setState(GameState::VICTORY);
         sendLogMessage(WinMessage(player.get(Option::HEALTH).getValue(), player.get(Option::POINTS).getValue()));
+        setState(GameState::VICTORY);
     } else {
         notify();
     }

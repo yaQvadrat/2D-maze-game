@@ -9,6 +9,7 @@ public:
     virtual ~ILogger(){}
     virtual void initLogger() = 0;
     virtual void logMessage(const AbstractLogMessage &msg) = 0;
+    virtual void releaseLogs() = 0;
 };
 
 #endif

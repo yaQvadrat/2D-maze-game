@@ -12,7 +12,7 @@ class FileLoggerOutput: public ILoggerOutput
 public:
     FileLoggerOutput(const std::string &filename);
     ~FileLoggerOutput();
-    void log(const AbstractLogMessage &msg) override;
+    void log(const std::string &logs) override;
 };
 
 #endif

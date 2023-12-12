@@ -1,6 +1,7 @@
 #include "GameLogger.hh"
 #include "FileLoggerOutput.hh"
 #include "ConsoleLoggerOutput.hh"
+#include "AbstractLogMessage.hh"
 #include <limits>
 #include <iostream>
 
@@ -8,8 +9,21 @@ constexpr const char *DEFAULT_LOG_PATH = "../Logger/LOGS";
 
 void GameLogger::logMessage(const AbstractLogMessage &msg)
 {
+    logs << msg << "\n";
+}
+
+void GameLogger::clearBuffer()
+{
+    logs.str("");
+    logs.clear();
+}
+
+void GameLogger::releaseLogs()
+{
+    const std::string &str_logs = logs.str();
+    clearBuffer();
     for (auto &concrete_writer: output_sources)
-        concrete_writer->log(msg);
+        concrete_writer->log(str_logs);
 }
 
 void GameLogger::initLogger()

@@ -56,6 +56,7 @@ void GameClient::mainLoop()
         [this]
         {
             while (game.getState() != GameState::QUIT) {
+                logger.releaseLogs();
                 input_key = input_reader.read();
 
                 if (game.getState() == GameState::IN_PROGRESS) {
@@ -81,4 +82,5 @@ void GameClient::mainLoop()
     }
 
     control_input_thread.join();
+    logger.releaseLogs();
 }

@@ -12,7 +12,7 @@ FileLoggerOutput::~FileLoggerOutput()
     file.close();
 }
 
-void FileLoggerOutput::log(const AbstractLogMessage &msg)
+void FileLoggerOutput::log(const std::string &logs)
 {
-    file << msg << "\n";
+    file << logs;
 }
