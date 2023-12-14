@@ -2,7 +2,6 @@
 #define WIN_MESSAGE_HH
 
 #include "AbstractLogMessage.hh"
-#include <iostream>
 
 class WinMessage: public AbstractLogMessage
 {

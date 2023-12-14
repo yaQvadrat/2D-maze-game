@@ -1,8 +1,7 @@
 #ifndef I_LOGGABLE_HH
 #define I_LOGGABLE_HH
 
-#include "AbstractLogMessage.hh"
-
+class AbstractLogMessage;
 class ILogger;
 
 class ILoggable

@@ -5,6 +5,7 @@
 #include "../Characteristic/Points.hh"
 #include "../Characteristic/Option.hh"
 #include <map>
+
 constexpr int MAX_HEALTH = 100;
 constexpr int MIN_HEALTH = 0;
 constexpr int MAX_POINTS = 5000;

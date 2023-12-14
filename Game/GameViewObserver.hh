@@ -7,7 +7,6 @@
 #include <map>
 #include <functional>
 
-
 class GameViewObserver: IObserver
 {
     IGameView &displayer;
