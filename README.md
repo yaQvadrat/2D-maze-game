@@ -19,7 +19,7 @@ Then you can see executable file "main" in Build directory
 
 In these screenshots, you can see what the console view of the game looks like
 
-File logs that are can be saved in the file "/Logger/LOGS" and also release on the console during the game (SELECT REQUIRED MODE).
+File logs that are can be saved in the file "/Logger/LOGS" or also release on the console during the game (SELECT REQUIRED MODE).
 
 
 ***Game Elements***
