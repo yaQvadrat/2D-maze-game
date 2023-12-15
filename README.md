@@ -1,6 +1,6 @@
 # OOP-based 2d game
-***The game is a maze game with events on the cells. 
-The goal is to reach the finish***
+***The game is a maze with events on the cells. 
+The goal is to reach the exit cell***
 
 # Build part
 After clone repository use the following commands:
