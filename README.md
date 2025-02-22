@@ -24,30 +24,30 @@ File logs that are can be saved in the file "/Logger/LOGS" or also release on th
 
 ***Game Elements***
 
-[@] = PLAYER
+- [@] = PLAYER
 
-[ ] = DEFAULT CELL
+- [ ] = DEFAULT CELL
 
-[#] = WALL
+- [#] = WALL
 
-[P] = POINTS
+- [P] = POINTS
 
-[T] = TRAP
+- [T] = TRAP
 
-[>], [<], [v], [^] = THROW ASIDE EVENT
+- [>], [<], [v], [^] = THROW ASIDE EVENT
 
 
 ***Default config:***
 
-W=MVUP
+- W=MVUP
 
-S=MVDOWN
+- S=MVDOWN
 
-A=MVLEFT
+- A=MVLEFT
 
-D=MVRIGHT
+- D=MVRIGHT
 
-Q=EXIT
+- Q=EXIT
 
 R=RESTART
 
