@@ -26,7 +26,7 @@ File logs that are can be saved in the file "/Logger/LOGS" or also release on th
 
 - [@] = PLAYER
 
-- [ ] = DEFAULT CELL
+- [] = DEFAULT CELL
 
 - [#] = WALL
 
